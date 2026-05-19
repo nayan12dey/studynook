@@ -8,6 +8,7 @@ export default function Home() {
     <main>
       <Banner></Banner>
       <Features></Features>
+      <HowItWorks></HowItWorks>
     </main>
   );
 }
