@@ -3,7 +3,8 @@ import Image from 'next/image';
 import { Button } from '@heroui/react';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
-export default function Banner() {
+
+const Banner = () => {
     return (
         <div className="relative bg-gradient-to-br from-indigo-50 via-white to-blue-50 overflow-hidden pt-24 pb-32 min-w-[1024px]">
             <div className="w-[1200px] mx-auto px-8 relative">
@@ -60,4 +61,6 @@ export default function Banner() {
             </div>
         </div>
     );
-}
+};
+
+export default Banner;

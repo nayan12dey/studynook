@@ -4,7 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@heroui/react";
 
-export default function Navbar() {
+
+const Navbar = () => {
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -34,7 +36,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          
+
           <div className="hidden md:flex items-center space-x-8">
             <Link
               href="/"
@@ -56,7 +58,7 @@ export default function Navbar() {
               href="/add-room"
               className="text-gray-600 hover:text-indigo-600 font-medium text-sm transition-colors relative group"
             >
-               Add Room
+              Add Room
               <span className="absolute inset-x-0 bottom-0 h-0.5 bg-indigo-600 transform scale-x-0 rounded-full -mb-1"></span>
             </Link>
 
@@ -77,7 +79,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-         
+
           <div className="hidden md:flex items-center space-x-4">
             <Link
               href="/login"
@@ -86,11 +88,11 @@ export default function Navbar() {
             </Link>
             <Link
               href="/register">
-              <Button className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm px-5 py-2.5 rounded-full shadow-sm shadow-indigo-200 transition-all hover:shadow-md">Register</Button> 
+              <Button className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm px-5 py-2.5 rounded-full shadow-sm shadow-indigo-200 transition-all hover:shadow-md">Register</Button>
             </Link>
           </div>
 
-          
+
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -138,11 +140,10 @@ export default function Navbar() {
         </div>
       </div>
 
-      
+
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? "max-h-64 border-t border-gray-200 opacity-100" : "max-h-0 opacity-0"
-        } bg-white shadow-lg absolute w-full`}
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-64 border-t border-gray-200 opacity-100" : "max-h-0 opacity-0"
+          } bg-white shadow-lg absolute w-full`}
         id="mobile-menu"
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
@@ -160,7 +161,7 @@ export default function Navbar() {
           >
             Rooms
           </Link>
-          
+
         </div>
         <div className="pt-4 pb-3 border-t border-gray-200">
           <div className="px-4 flex flex-col space-y-2">
@@ -183,4 +184,6 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
+};
+
+export default Navbar;

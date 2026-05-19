@@ -4,14 +4,17 @@ import Link from "next/link";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FaX, FaXTwitter } from "react-icons/fa6";
 
-export default function Footer() {
+
+const Footer = () => {
+
   const currentYear = new Date().getFullYear();
+
 
   return (
     <footer className="bg-gray-900 text-gray-300 py-12 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-        
+
           {/* Brand & Description */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
@@ -118,12 +121,12 @@ export default function Footer() {
 
 
             <a href="#" aria-label="LinkedIn" className="text-gray-400 hover:text-white transition-colors bg-gray-800 p-2 rounded-full hover:bg-blue-600">
-    
+
 
               <FaLinkedin></FaLinkedin>
             </a>
 
-            
+
             <a href="#" aria-label="Instagram" className="text-gray-400 hover:text-white transition-colors bg-gray-800 p-2 rounded-full hover:bg-pink-600">
               <FaInstagram />
 
@@ -133,5 +136,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
 
+export default Footer;
