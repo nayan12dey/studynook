@@ -47,7 +47,7 @@ const Navbar = () => {
             </Link>
 
             <Link
-              href="/all-rooms"
+              href="/rooms"
               className="text-gray-600 hover:text-indigo-600 font-medium text-sm transition-colors relative group"
             >
               Rooms

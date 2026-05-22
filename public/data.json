@@ -1,0 +1,119 @@
+[
+    {
+        "room_image": "https://cdn.pixabay.com/photo/2015/10/09/20/37/library-979896_640.jpg",
+        "room_name": "Silent Study Room A1",
+        "description": "Quiet, distraction-free room ideal for focused individual study and exam preparation.",
+        "floor": "Floor 1",
+        "seat_capacity": "1–2 people",
+        "hourly_rate": "$3/hr",
+        "amenities": [
+            "WiFi",
+            "Power Outlet",
+            "Desk Lamp"
+        ]
+    },
+    {
+        "room_image": "https://www.metrolibrary.org/sites/default/files/2019-11/BEStudyRoom4.jpg",
+        "room_name": "Group Study Room B2",
+        "description": "Spacious room designed for group discussions, collaborative learning, and project work.",
+        "floor": "Floor 2",
+        "seat_capacity": "4–6 people",
+        "hourly_rate": "$6/hr",
+        "amenities": [
+            "Whiteboard",
+            "WiFi",
+            "TV Screen"
+        ]
+    },
+    {
+        "room_image": "https://www.metrolibrary.org/sites/default/files/2019-11/BEStudyRoom3.jpg",
+        "room_name": "Tech Study Pod C3",
+        "description": "Modern pod with integrated tech setup for digital learning and online meetings.",
+        "floor": "Floor 3",
+        "seat_capacity": "2–3 people",
+        "hourly_rate": "$5/hr",
+        "amenities": [
+            "Monitor",
+            "WiFi",
+            "HD Webcam"
+        ]
+    },
+    {
+        "room_image": "https://www.laportelibrary.org/sites/default/files/2023-05/Coolspring-Meeting%20Rooms.jpg",
+        "room_name": "Reading Lounge D4",
+        "description": "Comfortable lounge-style space perfect for reading, light study, and relaxation.",
+        "floor": "Floor 1",
+        "seat_capacity": "3–5 people",
+        "hourly_rate": "$4/hr",
+        "amenities": [
+            "Sofa Seating",
+            "Natural Light",
+            "WiFi"
+        ]
+    },
+    {
+        "room_image": "https://s3.amazonaws.com/libapps/accounts/54278/images/GSR_239_a.jpg",
+        "room_name": "Project Lab E5",
+        "description": "Equipped lab space for academic projects, experiments, and technical collaboration.",
+        "floor": "Floor 4",
+        "seat_capacity": "5–8 people",
+        "hourly_rate": "$8/hr",
+        "amenities": [
+            "3D Printer",
+            "Whiteboard",
+            "WiFi"
+        ]
+    },
+    {
+        "room_image": "https://www.metrolibrary.org/sites/default/files/2019-03/CHStudyRoom4.jpg",
+        "room_name": "Quiet Booth F6",
+        "description": "Compact soundproof booth designed for uninterrupted study or online exams.",
+        "floor": "Floor 2",
+        "seat_capacity": "1 person",
+        "hourly_rate": "$2/hr",
+        "amenities": [
+            "Soundproof",
+            "WiFi",
+            "Charging Port"
+        ]
+    },
+    {
+        "room_image": "https://blog.bookmylibrary.in/wp-content/uploads/2025/06/Reading-Rooms-vs-Study-Libraries.jpg",
+        "room_name": "Collab Room G7",
+        "description": "Flexible seating arrangement for brainstorming sessions and team collaboration.",
+        "floor": "Floor 3",
+        "seat_capacity": "6–10 people",
+        "hourly_rate": "$7/hr",
+        "amenities": [
+            "Whiteboard",
+            "Projector",
+            "WiFi"
+        ]
+    },
+    {
+        "room_image": "https://d4804za1f1gw.cloudfront.net/wp-content/uploads/sites/122/2024/03/DSC_7976-1024x702.jpeg",
+        "room_name": "Executive Study H8",
+        "description": "Premium study room with enhanced comfort for faculty meetings and senior research work.",
+        "floor": "Floor 5",
+        "seat_capacity": "2–4 people",
+        "hourly_rate": "$10/hr",
+        "amenities": [
+            "AC",
+            "Conference Table",
+            "WiFi"
+        ]
+    },
+    {
+        "room_image": "https://library.princeton.edu/sites/g/files/toruqf6021/files/styles/16x9_2880w_1620h/public/2024-07/Group%20Study%20Room.jpg?itok=YTZBs6aN",
+        "room_name": "Digital Learning Room I9",
+        "description": "High-tech room designed for online courses, webinars, and virtual collaboration sessions.",
+        "floor": "Floor 3",
+        "seat_capacity": "3–6 people",
+        "hourly_rate": "$6/hr",
+        "amenities": [
+            "Smart Board",
+            "Camera Setup",
+            "WiFi"
+        ]
+    }
+]

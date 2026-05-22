@@ -60,7 +60,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/all-rooms"
+                  href="/rooms"
                   className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2 group w-max"
                 >
                   <span className="h-px w-2 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>

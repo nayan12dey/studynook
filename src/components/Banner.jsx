@@ -28,7 +28,7 @@ const Banner = () => {
 
                         <div className="flex flex-row gap-4 justify-start">
                             <Link
-                                href="/all-rooms"
+                                href="/rooms"
                             >
                                 <Button className={"p-10 rounded-full text-lg bg-indigo-600 hover:bg-indigo-700 transition-all duration-400 hover:scale-104"}>
                                     Explore Rooms <FaArrowRightLong className="w-5 h-5 ml-2" /></Button>
