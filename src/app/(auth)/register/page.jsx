@@ -7,8 +7,47 @@ import { FaBookOpen, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Button, Description, FieldError, Input, Label, TextField } from "@heroui/react";
 import { GrGoogle } from "react-icons/gr";
 import { FcGoogle } from "react-icons/fc";
+import { authClient, signUp } from "@/lib/auth-client";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+
 
 const RegisterPage = () => {
+
+    const router = useRouter()
+
+    const handleRegister = async (e) => {
+        e.preventDefault();
+        console.log(e.currentTarget)
+
+
+        const formData = new FormData(e.currentTarget)
+        // console.log(formData)
+
+        const registerData = Object.fromEntries(formData.entries())
+        console.log(registerData)
+
+
+        const { data, error } = await signUp.email({
+            ...registerData,
+        })
+
+        console.log({data, error})
+
+        if(data?.user){
+            toast.success("Registration successful! Please login")
+            router.push("/login")
+        }
+        else{
+            toast.error(error?.message)
+        }
+
+        
+    }
+
+
+
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-violet-50 flex items-center justify-center py-20">
             <div className="w-full max-w-md">
@@ -26,7 +65,7 @@ const RegisterPage = () => {
                         Register to get started and access your account
                     </p>
 
-                    <form className="flex flex-col gap-4">
+                    <form className="flex flex-col gap-4" onSubmit={handleRegister}>
                         {/* Name */}
                         <TextField
                             isRequired
@@ -88,13 +127,13 @@ const RegisterPage = () => {
                         >
                             <Label>Password</Label>
                             <Input placeholder="Enter your password" />
-                            <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
+                            <Description>Must be at least 6 characters with 1 uppercase and 1 number</Description>
                             <FieldError />
                         </TextField>
 
-                        {/* login */}
+                        {/* register */}
                         <button
-                            id="login"
+                            id="register"
                             type="submit"
                             className="mt-1 w-full py-2.5 rounded-xl font-semibold text-sm text-white
                         bg-indigo-600 hover:bg-indigo-700 active:scale-[0.98]
