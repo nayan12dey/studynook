@@ -80,8 +80,8 @@ const RegisterPage = () => {
                         {/* Photo URL */}
                         <TextField
                             isRequired
-                            name="photourl"
-                            type="text"
+                            name="image"
+                            type="url"
                         >
                             <Label>Photo URL</Label>
                             <Input placeholder="https://example.com/photo.jpg" />
@@ -162,7 +162,7 @@ const RegisterPage = () => {
 
                 </div>
 
-                {/* Register link */}
+                {/* Login link */}
                 <p className="text-center text-sm text-gray-500 mt-6">
                     Already have an account?{" "}
                     <Link href="/login" className="font-semibold text-indigo-600 hover:underline">

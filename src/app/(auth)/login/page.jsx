@@ -6,37 +6,41 @@ import { FaBookOpen, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Button, Description, FieldError, Input, Label, TextField } from "@heroui/react";
 import { GrGoogle } from "react-icons/gr";
 import { FcGoogle } from "react-icons/fc";
-import { signIn } from "@/lib/auth-client";
+import { authClient, signIn } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 
 export default function LoginPage() {
 
 
     const handleLogin = async (e) => {
-            e.preventDefault();
-            console.log(e.currentTarget)
-    
-    
-            const formData = new FormData(e.currentTarget)
-            // console.log(formData)
-    
-            const loginData = Object.fromEntries(formData.entries())
-            console.log(loginData)
-    
-    
-            const { data, error } = await signIn.email({
-                ...loginData,
-                callbackURL: "/"
-            })
-    
-            console.log({data, error})
-    
-            if(error){
-                toast.error(error?.message)
-            }
-    
-            
+        e.preventDefault();
+        console.log(e.currentTarget)
+
+
+        const formData = new FormData(e.currentTarget)
+        // console.log(formData)
+
+        const loginData = Object.fromEntries(formData.entries())
+        console.log(loginData)
+
+
+        const { data, error } = await signIn.email({
+            ...loginData,
+            // callbackURL: "/"
+        })
+
+        // const { data: tokenData } = await authClient.token()
+        // console.log(tokenData)        
+
+
+        console.log({ data, error })
+
+        if (error) {
+            toast.error(error?.message)
         }
+
+
+    }
 
 
 
