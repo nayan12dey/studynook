@@ -43,6 +43,13 @@ export default function LoginPage() {
     }
 
 
+    const handleGoogleSignin = async () => {
+        await authClient.signIn.social({
+            provider: "google"
+        })
+    }
+
+
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-violet-50 flex items-center justify-center p-4">
@@ -124,6 +131,7 @@ export default function LoginPage() {
 
                     {/* Social */}
                     <Button
+                        onClick={handleGoogleSignin}
                         variant="outline"
                         className="w-full h-11 flex items-center justify-center gap-3 rounded-xl border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 hover:text-black transition-all duration-200 shadow-sm"
                     >

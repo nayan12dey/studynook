@@ -37,14 +37,12 @@ const RegisterPage = () => {
             toast.success("Registration successful! Please login")
             router.push("/login")
         }
-        else if (error) {
+        else {
             toast.error(error?.message)
         }
 
 
-
     }
-
 
     const handleGoogleSignin = async () => {
         await authClient.signIn.social({
