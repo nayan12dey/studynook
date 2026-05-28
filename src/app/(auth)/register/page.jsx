@@ -3,7 +3,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { FaBookOpen, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Button, Description, FieldError, Input, Label, TextField } from "@heroui/react";
 import { GrGoogle } from "react-icons/gr";
 import { FcGoogle } from "react-icons/fc";
@@ -32,19 +31,26 @@ const RegisterPage = () => {
             ...registerData,
         })
 
-        console.log({data, error})
+        console.log({ data, error })
 
-        if(data?.user){
+        if (data?.user) {
             toast.success("Registration successful! Please login")
             router.push("/login")
         }
-        else{
+        else if (error) {
             toast.error(error?.message)
         }
 
-        
+
+
     }
 
+
+    const handleGoogleSignin = async () => {
+        await authClient.signIn.social({
+            provider: "google"
+        })
+    }
 
 
 
@@ -52,10 +58,8 @@ const RegisterPage = () => {
         <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-violet-50 flex items-center justify-center py-20">
             <div className="w-full max-w-md">
 
-
-
                 <div className="flex items-center justify-center mb-5">
-                    <h1 className="text-2xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">Register</h1>
+                    <h1 className="text-2xl font-bold text-gray-900 ">Register</h1>
                 </div>
 
                 {/* Card */}
@@ -153,6 +157,7 @@ const RegisterPage = () => {
 
                     {/* Social */}
                     <Button
+                        onClick={handleGoogleSignin}
                         variant="outline"
                         className="w-full h-11 flex items-center justify-center gap-3 rounded-xl border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 hover:text-black transition-all duration-200 shadow-sm"
                     >

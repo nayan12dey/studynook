@@ -1,6 +1,8 @@
 import AmenityBadge from '@/components/AmenityBadge';
 import BookingCard from '@/components/BookingCard';
 import Stat from '@/components/Stat';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -15,9 +17,12 @@ import {
 } from 'react-icons/fa6';
 
 
-const fetchSingleRoom = async (id) => {
+const fetchSingleRoom = async (id, token) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rooms/${id}`, {
         cache: 'no-store',
+        headers: {
+            authorization: `Bearer ${token}` || ""
+        }
     });
     const data = await res.json();
     return data || {};
@@ -28,9 +33,17 @@ const fetchSingleRoom = async (id) => {
 const RoomDetailsPage = async ({ params }) => {
     const { id } = await params;
 
-    const room = await fetchSingleRoom(id);
+    const { token } = await auth.api.getToken({
 
-    
+        headers: await headers() // headers containing the user's session token
+    });
+
+
+
+
+    const room = await fetchSingleRoom(id, token);
+
+
     const {
         _id,
         room_name,
@@ -90,18 +103,17 @@ const RoomDetailsPage = async ({ params }) => {
                     {/* Availability badge */}
                     <div className="absolute top-5 left-5">
                         <span
-                            className={`inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-1.5 rounded-full shadow-sm border ${
-                                isAvailable
-                                    ? 'bg-emerald-500/90 border-emerald-400 text-white'
-                                    : 'bg-rose-500/90 border-rose-400 text-white'
-                            } backdrop-blur-md`}
+                            className={`inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-1.5 rounded-full shadow-sm border ${isAvailable
+                                ? 'bg-emerald-500/90 border-emerald-400 text-white'
+                                : 'bg-rose-500/90 border-rose-400 text-white'
+                                } backdrop-blur-md`}
                         >
                             <span className={`w-1.5 h-1.5 rounded-full ${isAvailable ? 'bg-white animate-pulse' : 'bg-white/60'}`} />
                             {isAvailable ? 'Available' : 'Unavailable'}
                         </span>
                     </div>
 
-                   
+
 
                     {/* Room name overlay on image */}
                     <div className="absolute bottom-6 left-6 right-6">
@@ -122,10 +134,10 @@ const RoomDetailsPage = async ({ params }) => {
 
                         {/* stats */}
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                            <Stat icon={FaClock}    label="Hourly Rate"    value={hourly_rate}    accent={true} />
-                            <Stat icon={FaUsers}    label="Capacity"       value={`${seat_capacity} seats`} />
-                            <Stat icon={FaBuilding} label="Floor"          value={`${floor}`} />
-                            <Stat icon={FaBolt}     label="Status"         value={isAvailable ? 'Open' : 'Closed'} />
+                            <Stat icon={FaClock} label="Hourly Rate" value={hourly_rate} accent={true} />
+                            <Stat icon={FaUsers} label="Capacity" value={`${seat_capacity} seats`} />
+                            <Stat icon={FaBuilding} label="Floor" value={`${floor}`} />
+                            <Stat icon={FaBolt} label="Status" value={isAvailable ? 'Open' : 'Closed'} />
                         </div>
 
                         {/* Description */}
@@ -156,7 +168,7 @@ const RoomDetailsPage = async ({ params }) => {
                             )}
                         </div>
 
-                        
+
                     </div>
 
                     {/* booking card*/}

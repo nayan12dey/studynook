@@ -26,7 +26,7 @@ export default function LoginPage() {
 
         const { data, error } = await signIn.email({
             ...loginData,
-            // callbackURL: "/"
+            callbackURL: "/"
         })
 
         // const { data: tokenData } = await authClient.token()
@@ -51,7 +51,7 @@ export default function LoginPage() {
 
 
                 <div className="flex items-center justify-center mb-5">
-                    <h1 className="text-2xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">Login</h1>
+                    <h1 className="text-2xl font-bold text-gray-900">Login</h1>
                 </div>
 
                 {/* Card */}
@@ -98,7 +98,7 @@ export default function LoginPage() {
                         >
                             <Label>Password</Label>
                             <Input placeholder="Enter your password" />
-                            <Description>Must be at least 6 characters with 1 uppercase and 1 number</Description>
+                            {/* <Description>Must be at least 6 characters with 1 uppercase and 1 number</Description> */}
                             <FieldError />
                         </TextField>
 
