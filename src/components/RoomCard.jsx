@@ -21,12 +21,12 @@ const RoomCard = ({ room }) => {
 
                 <div className="absolute top-3 left-3 bg-slate-900/60 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm border border-white/10">
                     <FaBuilding className="w-3 h-3 text-indigo-300" />
-                    <span>{room?.floor}</span>
+                    <span>Floor {room?.floor}</span>
                 </div>
 
 
                 <div className="absolute top-3 right-3 bg-indigo-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
-                    {room.hourly_rate}
+                    ${room.hourly_rate}/hr
                 </div>
             </div>
 
@@ -42,7 +42,7 @@ const RoomCard = ({ room }) => {
                     <div className="flex items-center gap-3 text-xs font-semibold text-slate-500 mt-2">
                         <span className="flex items-center gap-1 bg-slate-50 border border-slate-100 px-2 py-0.5 rounded-md">
                             <FaUsers className="w-3.5 h-3.5 text-indigo-500" />
-                            <span>{room.seat_capacity}</span>
+                            <span>{room.seat_capacity} people</span>
                         </span>
                     </div>
 
@@ -73,7 +73,7 @@ const RoomCard = ({ room }) => {
                 <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
                     <div className="flex flex-col">
                         <span className="text-[9px] text-slate-400 font-semibold uppercase tracking-wider">Hourly Rate</span>
-                        <span className="text-base font-extrabold text-indigo-600">{room.hourly_rate}</span>
+                        <span className="text-base font-extrabold text-indigo-600">${room.hourly_rate}/hr</span>
                     </div>
 
                     <Link

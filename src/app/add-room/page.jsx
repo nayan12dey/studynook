@@ -39,6 +39,16 @@ const AddRoomPage = () => {
         e.currentTarget.reset();
         setAmenities([]);
 
+        const res = await fetch("http://localhost:5000/add-room", {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(room)
+        })
+
+        const data = await res.json()
+        console.log(data)
         
     };
 
@@ -63,8 +73,8 @@ const AddRoomPage = () => {
                                     <input
                                         required
                                         type="text"
-                                        name="roomName"
-                                        id="roomName"
+                                        name="room_name"
+                                        id="room_name"
                                         className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all hover:bg-slate-100/50"
                                         placeholder="e.g., The Quiet Nook"
                                     />
@@ -93,8 +103,8 @@ const AddRoomPage = () => {
                                     </div>
                                     <input
                                         type="url"
-                                        name="image"
-                                        id="image"
+                                        name="room_image"
+                                        id="room_image"
                                         className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all hover:bg-slate-100/50"
                                         placeholder="https://example.com/image.jpg"
                                     />
@@ -129,10 +139,10 @@ const AddRoomPage = () => {
                                     <input
                                         type="number"
                                         min="1"
-                                        name="capacity"
-                                        id="capacity"
+                                        name="seat_capacity"
+                                        id="seat_capacity"
                                         className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all hover:bg-slate-100/50"
-                                        placeholder="e.g., 4"
+                                        placeholder="2-4 people"
                                     />
                                 </div>
                             </div>
@@ -146,9 +156,9 @@ const AddRoomPage = () => {
                                     <input
                                         type="number"
                                         min="0"
-                                        step="0.01"
-                                        name="hourlyRate"
-                                        id="hourlyRate"
+                                        step="1"
+                                        name="hourly_rate"
+                                        id="hourly_rate"
                                         className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all hover:bg-slate-100/50"
                                         placeholder="e.g., 5.00"
                                     />

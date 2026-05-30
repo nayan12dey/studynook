@@ -8,7 +8,7 @@ const BookingCard = ({ hourly_rate, room_name }) => {
         <div className="sticky top-24 bg-white/70 backdrop-blur-xl border border-white/60 rounded-3xl shadow-2xl shadow-indigo-100/60 p-6 flex flex-col gap-5">
             {/* Price */}
             <div className="flex items-end gap-1">
-                <span className="text-4xl font-black text-indigo-600">{hourly_rate}</span>
+                <span className="text-4xl font-black text-indigo-600">${hourly_rate}</span>
                 <span className="text-slate-400 text-sm mb-1 font-medium">/ hour</span>
             </div>
 

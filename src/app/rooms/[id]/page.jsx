@@ -122,7 +122,7 @@ const RoomDetailsPage = async ({ params }) => {
                         </h1>
                         <p className="flex items-center gap-1.5 text-white/80 text-sm mt-1 font-medium">
                             <FaLocationDot className="w-3.5 h-3.5 text-indigo-300" />
-                            {floor}
+                            Floor {floor}
                         </p>
                     </div>
                 </div>
@@ -134,8 +134,8 @@ const RoomDetailsPage = async ({ params }) => {
 
                         {/* stats */}
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                            <Stat icon={FaClock} label="Hourly Rate" value={hourly_rate} accent={true} />
-                            <Stat icon={FaUsers} label="Capacity" value={`${seat_capacity} seats`} />
+                            <Stat icon={FaClock} label="Hourly Rate" value={`$${hourly_rate}`} accent={true} />
+                            <Stat icon={FaUsers} label="Capacity" value={`${seat_capacity} people`} />
                             <Stat icon={FaBuilding} label="Floor" value={`${floor}`} />
                             <Stat icon={FaBolt} label="Status" value={isAvailable ? 'Open' : 'Closed'} />
                         </div>
