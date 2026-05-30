@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { FiHome, FiImage, FiDollarSign, FiUsers, FiLayers, FiCheck } from 'react-icons/fi';
 import toast from 'react-hot-toast';
+import { authClient } from '@/lib/auth-client';
 
 const AMENITIES_OPTIONS = [
     'Whiteboard',
@@ -25,19 +26,30 @@ const AddRoomPage = () => {
         );
     };
 
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
+
+        const session = await authClient.getSession();
+        // console.log(session);
+
+
         const room = {
-            ... Object.fromEntries(formData.entries()),
-            amenities
+            ...Object.fromEntries(formData.entries()),
+            amenities,
+            ownerEmail: session?.data?.user?.email,
+            ownerName: session?.data?.user?.name
+
         }
 
-        
+
         console.log("Form submitted:", room);
         toast.success('Room added successfully!');
-        e.currentTarget.reset();
+        e.currentTarget?.reset();
         setAmenities([]);
+
 
         const res = await fetch("http://localhost:5000/add-room", {
             method: 'POST',
@@ -47,9 +59,11 @@ const AddRoomPage = () => {
             body: JSON.stringify(room)
         })
 
+        
+
         const data = await res.json()
         console.log(data)
-        
+
     };
 
     return (

@@ -2,6 +2,7 @@ import AmenityBadge from '@/components/AmenityBadge';
 import BookingCard from '@/components/BookingCard';
 import Stat from '@/components/Stat';
 import { auth } from '@/lib/auth';
+import { Button } from '@heroui/react';
 import { headers } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -54,9 +55,21 @@ const RoomDetailsPage = async ({ params }) => {
         seat_capacity,
         room_image,
         availability_status,
+        ownerEmail
     } = room;
 
     const isAvailable = availability_status !== 'unavailable';
+
+    const session = await auth.api.getSession({
+        headers: await headers(),
+    });
+
+    const currentUserEmail = session?.user?.email;
+    console.log(currentUserEmail)
+
+    const isOwner = currentUserEmail === ownerEmail;
+
+
 
     return (
         <section className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30">
@@ -173,6 +186,25 @@ const RoomDetailsPage = async ({ params }) => {
 
                     {/* booking card*/}
                     <div className="lg:col-span-1">
+                        {isOwner && (
+                            <div className="bg-white p-5 rounded-2xl shadow-md mb-4">
+                                <div className="flex gap-3">
+
+                                    <Button
+                                        variant='secondary'
+                                    >
+                                        Edit Room
+                                    </Button>
+
+                                    <Button
+                                        variant='danger'
+                                    >
+                                        Delete Room
+                                    </Button>
+
+                                </div>
+                            </div>
+                        )}
                         <BookingCard hourly_rate={hourly_rate} room_name={room_name} />
                     </div>
                 </div>

@@ -14,7 +14,7 @@ const BookingCard = ({ hourly_rate, room_name }) => {
 
             <hr className="border-slate-100" />
 
-           
+
             <button
                 id="book-now-btn"
                 className="w-full bg-indigo-600 hover:bg-indigo-700 active:scale-[0.97] text-white font-bold py-3.5 rounded-2xl transition-all duration-300 shadow-md hover:shadow-indigo-300/50 hover:shadow-lg flex items-center justify-center gap-2"
