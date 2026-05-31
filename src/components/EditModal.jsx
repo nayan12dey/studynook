@@ -87,10 +87,7 @@ export function EditModal({ room: roomData }) {
         console.log(data)
 
 
-
     };
-
-
 
 
 

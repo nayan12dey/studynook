@@ -1,5 +1,6 @@
 import AmenityBadge from '@/components/AmenityBadge';
 import BookingCard from '@/components/BookingCard';
+import { DeleteRoom } from '@/components/DeleteRoom';
 import { EditModal } from '@/components/EditModal';
 import Stat from '@/components/Stat';
 import { auth } from '@/lib/auth';
@@ -191,11 +192,7 @@ const RoomDetailsPage = async ({ params }) => {
 
                                    <EditModal room={room}></EditModal>
 
-                                    <Button
-                                        variant='danger'
-                                    >
-                                        Delete Room
-                                    </Button>
+                                   <DeleteRoom room={room}></DeleteRoom>
 
                                 </div>
                             </div>
