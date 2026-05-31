@@ -21,13 +21,12 @@ export function EditModal({ room: roomData }) {
 
 
 
-    const [amenities, setAmenities] = useState([]);
-
+    const [updatedAmenities, setUpdatedAmenities] = useState([]);
 
 
 
     const toggleAmenity = (amenity) => {
-        setAmenities(prev =>
+        setUpdatedAmenities(prev =>
             prev.includes(amenity)
                 ? prev.filter(a => a !== amenity)
                 : [...prev, amenity]
@@ -61,7 +60,7 @@ export function EditModal({ room: roomData }) {
 
         const room = {
             ...Object.fromEntries(formData.entries()),
-            amenities,
+            amenities: updatedAmenities,
             ownerEmail: session?.data?.user?.email,
             ownerName: session?.data?.user?.name
 
@@ -71,21 +70,21 @@ export function EditModal({ room: roomData }) {
         console.log("Form submitted:", room);
         toast.success('Room Updated successfully!');
         e.currentTarget?.reset();
-        setAmenities([]);
+        setUpdatedAmenities([]);
 
 
-        // const res = await fetch("http://localhost:5000/add-room", {
-        //     method: 'POST',
-        //     headers: {
-        //         "content-type": "application/json"
-        //     },
-        //     body: JSON.stringify(room)
-        // })
+        const res = await fetch(`http://localhost:5000/rooms/${_id}`, {
+            method: 'PATCH',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(room)
+        })
 
 
 
-        // const data = await res.json()
-        // console.log(data)
+        const data = await res.json()
+        console.log(data)
 
 
 
@@ -223,7 +222,7 @@ export function EditModal({ room: roomData }) {
                                         <label className="block text-sm font-semibold text-slate-700 mb-4">Amenities</label>
                                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                                             {AMENITIES_OPTIONS.map((amenity) => {
-                                                const isSelected = amenities.includes(amenity);
+                                                const isSelected = updatedAmenities.includes(amenity);
                                                 return (
                                                     <div
                                                         key={amenity}
