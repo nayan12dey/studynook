@@ -1,5 +1,6 @@
 import AmenityBadge from '@/components/AmenityBadge';
 import BookingCard from '@/components/BookingCard';
+import { EditModal } from '@/components/EditModal';
 import Stat from '@/components/Stat';
 import { auth } from '@/lib/auth';
 import { Button } from '@heroui/react';
@@ -30,7 +31,6 @@ const fetchSingleRoom = async (id, token) => {
 };
 
 
-
 const RoomDetailsPage = async ({ params }) => {
     const { id } = await params;
 
@@ -38,7 +38,6 @@ const RoomDetailsPage = async ({ params }) => {
 
         headers: await headers() // headers containing the user's session token
     });
-
 
 
 
@@ -65,7 +64,7 @@ const RoomDetailsPage = async ({ params }) => {
     });
 
     const currentUserEmail = session?.user?.email;
-    console.log(currentUserEmail)
+    // console.log(currentUserEmail)
 
     const isOwner = currentUserEmail === ownerEmail;
 
@@ -190,11 +189,7 @@ const RoomDetailsPage = async ({ params }) => {
                             <div className="bg-white p-5 rounded-2xl shadow-md mb-4">
                                 <div className="flex gap-3">
 
-                                    <Button
-                                        variant='secondary'
-                                    >
-                                        Edit Room
-                                    </Button>
+                                   <EditModal room={room}></EditModal>
 
                                     <Button
                                         variant='danger'
@@ -205,7 +200,7 @@ const RoomDetailsPage = async ({ params }) => {
                                 </div>
                             </div>
                         )}
-                        <BookingCard hourly_rate={hourly_rate} room_name={room_name} />
+                        <BookingCard hourly_rate={hourly_rate} room_name={room_name} isOwner={isOwner} />
                     </div>
                 </div>
             </div>
