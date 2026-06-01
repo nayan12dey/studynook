@@ -1,3 +1,4 @@
+
 import AmenityBadge from '@/components/AmenityBadge';
 import BookingCard from '@/components/BookingCard';
 import { DeleteRoom } from '@/components/DeleteRoom';
@@ -197,7 +198,7 @@ const RoomDetailsPage = async ({ params }) => {
                                 </div>
                             </div>
                         )}
-                        <BookingCard hourly_rate={hourly_rate} room_name={room_name} isOwner={isOwner} />
+                        <BookingCard hourly_rate={hourly_rate} room_name={room_name} />
                     </div>
                 </div>
             </div>

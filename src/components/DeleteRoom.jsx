@@ -3,6 +3,7 @@
 
 import { AlertDialog, Button } from "@heroui/react";
 import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 
 export function DeleteRoom({ room }) {
 
@@ -19,6 +20,7 @@ export function DeleteRoom({ room }) {
 
         const data = await res.json()
         console.log(data)
+        toast.error("Room deleted successfully")
         redirect("/rooms")
     }
 

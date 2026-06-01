@@ -1,10 +1,20 @@
+"use client";
 
+
+import { useSession } from '@/lib/auth-client';
 import { Button } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
 import { FaBolt } from 'react-icons/fa6';
 
-const BookingCard = ({ hourly_rate, room_name, isOwner }) => {
+const BookingCard = ({ hourly_rate, room_name }) => {
+
+    const { data: session } = useSession()
+    const user = session?.user;
+    console.log(user)
+
+
+
     return (
         <div className="sticky top-24 bg-white/70 backdrop-blur-xl border border-white/60 rounded-3xl shadow-2xl shadow-indigo-100/60 p-6 flex flex-col gap-5">
             {/* Price */}
@@ -16,7 +26,7 @@ const BookingCard = ({ hourly_rate, room_name, isOwner }) => {
             <hr className="border-slate-100" />
 
             {
-                isOwner ? <button
+                user ? <button
                     id="book-now-btn"
                     className="w-full bg-indigo-600 hover:bg-indigo-700 active:scale-[0.97] text-white font-bold py-3.5 rounded-2xl transition-all duration-300 shadow-md hover:shadow-indigo-300/50 hover:shadow-lg flex items-center justify-center gap-2"
                 >
