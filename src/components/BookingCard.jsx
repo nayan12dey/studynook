@@ -6,6 +6,8 @@ import { Button } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
 import { FaBolt } from 'react-icons/fa6';
+import { BookingModal } from './BookingModal';
+
 
 const BookingCard = ({ hourly_rate, room_name }) => {
 
@@ -26,13 +28,7 @@ const BookingCard = ({ hourly_rate, room_name }) => {
             <hr className="border-slate-100" />
 
             {
-                user ? <button
-                    id="book-now-btn"
-                    className="w-full bg-indigo-600 hover:bg-indigo-700 active:scale-[0.97] text-white font-bold py-3.5 rounded-2xl transition-all duration-300 shadow-md hover:shadow-indigo-300/50 hover:shadow-lg flex items-center justify-center gap-2"
-                >
-                    <FaBolt className="w-4 h-4" />
-                    Book Now
-                </button> : <Link href={"/login"}>
+                user ? <BookingModal hourly_rate={hourly_rate} room_name={room_name} /> : <Link href={"/login"}>
                     <button
                         id="book-now-btn"
                         className="w-full bg-indigo-600 hover:bg-indigo-700 active:scale-[0.97] text-white font-bold py-3.5 rounded-2xl transition-all duration-300 shadow-md hover:shadow-indigo-300/50 hover:shadow-lg flex items-center justify-center gap-2"
