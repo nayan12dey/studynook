@@ -7,7 +7,6 @@ import { useMemo, useState } from "react";
 import {
     FiCalendar,
     FiClock,
-    FiDollarSign,
     FiFileText,
 } from "react-icons/fi";
 import toast from "react-hot-toast";
@@ -28,10 +27,7 @@ const timeSlots = [
     "20:00",
 ];
 
-export function BookingModal({
-    room_name,
-    hourly_rate,
-}) {
+export function BookingModal({ hourly_rate, room, user }) {
     const [date, setDate] = useState("");
     const [startTime, setStartTime] = useState("");
     const [endTime, setEndTime] = useState("");
@@ -50,20 +46,40 @@ export function BookingModal({
         return (endHour - startHour) * hourly_rate;
     }, [startTime, endTime, hourly_rate]);
 
+
+    const {room_name, room_image, ownerEmail} = room
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const bookingData = {
             room_name,
+            room_image,
             bookingDate: date,
             startTime,
             endTime,
             totalCost,
             specialNote,
+            ownerEmail,
+            userId: user.id
         };
 
+        const res = await fetch(`http://localhost:5000/booking`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(bookingData)
+        })
+
         console.log(bookingData);
-        toast.success("Room booked successfully!")
+        
+        const data = await res.json();
+        if(data.acknowledged){
+            toast.success("Room booked successfully!")
+        }
+        
     };
 
     return (
@@ -83,7 +99,7 @@ export function BookingModal({
 
                         <Modal.Header>
                             <Modal.Heading>
-                                Book Study Room
+                                Study Room
                             </Modal.Heading>
                         </Modal.Header>
 
@@ -111,11 +127,6 @@ export function BookingModal({
 
                                                 <input
                                                     type="date"
-                                                    min={
-                                                        new Date()
-                                                            .toISOString()
-                                                            .split("T")[0]
-                                                    }
                                                     value={date}
                                                     onChange={(e) =>
                                                         setDate(

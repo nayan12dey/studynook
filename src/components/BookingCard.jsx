@@ -9,7 +9,7 @@ import { FaBolt } from 'react-icons/fa6';
 import { BookingModal } from './BookingModal';
 
 
-const BookingCard = ({ hourly_rate, room_name }) => {
+const BookingCard = ({ hourly_rate, room }) => {
 
     const { data: session } = useSession()
     const user = session?.user;
@@ -28,7 +28,7 @@ const BookingCard = ({ hourly_rate, room_name }) => {
             <hr className="border-slate-100" />
 
             {
-                user ? <BookingModal hourly_rate={hourly_rate} room_name={room_name} /> : <Link href={"/login"}>
+                user ? <BookingModal hourly_rate={hourly_rate} room={room} user={user} /> : <Link href={"/login"}>
                     <button
                         id="book-now-btn"
                         className="w-full bg-indigo-600 hover:bg-indigo-700 active:scale-[0.97] text-white font-bold py-3.5 rounded-2xl transition-all duration-300 shadow-md hover:shadow-indigo-300/50 hover:shadow-lg flex items-center justify-center gap-2"
@@ -39,12 +39,7 @@ const BookingCard = ({ hourly_rate, room_name }) => {
                 </Link>
             }
 
-            <button
-                id="save-room-btn"
-                className="w-full border border-indigo-200 text-indigo-600 hover:bg-indigo-50 font-semibold py-3 rounded-2xl transition-all duration-200 text-sm"
-            >
-                Save Room
-            </button>
+            
 
             <p className="text-center text-[11px] text-slate-400">
                 No payment charged until confirmed

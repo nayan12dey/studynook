@@ -198,7 +198,7 @@ const RoomDetailsPage = async ({ params }) => {
                                 </div>
                             </div>
                         )}
-                        <BookingCard hourly_rate={hourly_rate} room_name={room_name} />
+                        <BookingCard hourly_rate={hourly_rate} room={room} />
                     </div>
                 </div>
             </div>

@@ -1,7 +1,26 @@
+import { auth } from "@/lib/auth";
+import { Chip } from "@heroui/react";
+import { headers } from "next/headers";
+import Image from "next/image";
 
-import React from 'react';
 
-const MyBookingsPage = () => {
+
+const MyBookingsPage = async () => {
+
+    const session = await auth.api.getSession({
+        headers: await headers(),
+    });
+
+    const user = session?.user
+
+    console.log(user)
+
+    const res = await fetch(`http://localhost:5000/booking/${user?.id}`)
+
+    const bookings = await res.json()
+    console.log(bookings)
+
+
     return (
         <div>
             My Bookings Page
