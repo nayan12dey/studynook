@@ -1,4 +1,9 @@
 import Image from "next/image";
+
+export const metadata = {
+  title: "StudyNook - Home",
+  description: "Find and book premium study rooms for focused learning and collaboration.",
+};
 import Banner from "@/components/Banner";
 import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";

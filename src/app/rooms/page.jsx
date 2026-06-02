@@ -1,6 +1,11 @@
 import RoomCard from '@/components/RoomCard';
 import { fetchRooms } from '@/lib/data';
 
+export const metadata = {
+  title: "StudyNook - Available Rooms",
+  description: "Browse all available study rooms and reserve your perfect spot.",
+};
+
 
 const RoomsPage = async() => {
     const rooms = await fetchRooms();

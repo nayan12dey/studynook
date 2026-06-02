@@ -32,6 +32,17 @@ const fetchSingleRoom = async (id, token) => {
     return data || {};
 };
 
+export async function generateMetadata({ params }) {
+    const { id } = await params;
+    const room = await fetchSingleRoom(id, "");
+    return {
+        title: room?.room_name
+            ? `StudyNook - ${room.room_name}`
+            : "StudyNook - Room Details",
+        description: room?.description || "View details and book this study room on StudyNook.",
+    };
+}
+
 
 const RoomDetailsPage = async ({ params }) => {
     const { id } = await params;

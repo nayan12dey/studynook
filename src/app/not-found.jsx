@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "404 – Page Not Found | StudyNook",
+  title: "404 – Page Not Found - StudyNook",
   description: "The page you are looking for could not be found.",
 };
 

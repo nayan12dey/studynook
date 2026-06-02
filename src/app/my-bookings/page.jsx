@@ -1,4 +1,9 @@
 import { auth } from "@/lib/auth";
+
+export const metadata = {
+  title: "StudyNook - My Bookings",
+  description: "View and manage all your study room bookings.",
+};
 import { Chip } from "@heroui/react";
 import { headers } from "next/headers";
 import Image from "next/image";
