@@ -14,7 +14,7 @@ export async function proxy(request) {
 
     if(!session && !session?.user){
     
-        return NextResponse.redirect(new URL('/', request.url))
+        return NextResponse.redirect(new URL('/login', request.url))
     }
 }
 
@@ -22,6 +22,6 @@ export async function proxy(request) {
 // export default function proxy(request) { ... }
 
 export const config = {
-    matcher: ['/rooms/:id',"/dashboard", "/add-room"],
+    matcher: ['/rooms/:path', "/add-room", "/my-bookings", "/my-listings"],
     
 }

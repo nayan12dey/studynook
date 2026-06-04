@@ -21,7 +21,7 @@ const Navbar = () => {
 
   const handleLogOut = async () => {
     await signOut()
-    router.push("/")
+    router.push("/login")
   }
 
   return (

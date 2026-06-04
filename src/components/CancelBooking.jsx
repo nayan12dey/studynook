@@ -10,7 +10,10 @@ export function CancelBooking({ bookingId }) {
     const handleCancel = async () => {
         const res = await fetch(`http://localhost:5000/booking/${bookingId}`,{
             method: "PATCH",
-
+            headers: {
+                "content-type": "application/json",
+                
+            }
         });
 
         const data = await res.json();

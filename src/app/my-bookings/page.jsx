@@ -59,7 +59,7 @@ const MyBookingsPage = async () => {
 
             <div className="max-w-6xl mx-auto">
                 {bookings.length === 0 ? (
-                    /* ── Empty State ── */
+                    /* Empty State  */
                     <div className="flex flex-col items-center justify-center py-28 text-center">
                         <div className="w-24 h-24 rounded-full bg-indigo-50 border-2 border-dashed border-indigo-200 flex items-center justify-center mb-6">
                             <FiCalendar className="w-10 h-10 text-indigo-300" />
