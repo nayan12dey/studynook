@@ -62,7 +62,7 @@ const RoomCard = ({ room }) => {
                             </span>
                         ))}
                         {room.amenities.length > 3 && (
-                            <span className="bg-slate-50 border border-slate-200 text-indigo-600 text-[10px] font-semibold px-2 py-0.5 rounded-md">
+                            <span className="bg-indigo-50/60 border border-indigo-100 text-indigo-600 text-[10px] font-semibold px-2 py-0.5 rounded-md">
                                 +{room.amenities.length - 3} more
                             </span>
                         )}

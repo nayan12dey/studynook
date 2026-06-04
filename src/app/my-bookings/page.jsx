@@ -80,7 +80,7 @@ const MyBookingsPage = async () => {
                         </Link>
                     </div>
                 ) : (
-                    /* ── Booking Cards Grid ── */
+                    /* Booking Cards Grid  */
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                         {bookings.map((booking) => {
                             const isConfirmed = booking.status === "confirmed";
