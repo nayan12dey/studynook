@@ -1,3 +1,4 @@
+import AmenitiesFilter from '@/components/AmenitiesFilter';
 import RoomCard from '@/components/RoomCard';
 import SearchBar from '@/components/SearchBar';
 // import RoomsFilter from '@/components/RoomsFilter';
@@ -16,7 +17,7 @@ const RoomsPage = async ({ searchParams }) => {
     console.log(sParams)
 
 
-    const rooms = await fetchRooms(sParams?.searchTerm || "");
+    const rooms = await fetchRooms(sParams?.searchTerm || "", sParams?.amenities || "");
 
     return (
         <div className="bg-slate-50 min-h-screen pt-12 pb-24">
@@ -35,24 +36,18 @@ const RoomsPage = async ({ searchParams }) => {
                     </p>
                 </div>
 
-                {/* <div className="relative flex items-center bg-white border border-slate-200 rounded-2xl shadow-sm focus-within:ring-4 focus-within:ring-blue-600/10 focus-within:border-blue-600 transition-all overflow-hidden">
+                <div className="max-w-4xl mx-auto mb-12 flex items-center gap-4">
+                    <div className="flex-1">
+                        <SearchBar />
+                    </div>
 
-
-                </div> */}
-
-                <div className="max-w-3xl mx-auto mb-12">
-                    <SearchBar />
+                    <div className="w-56">
+                        <AmenitiesFilter />
+                    </div>
                 </div>
 
 
-                {/* 
-                {
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {rooms.map((room) => (
-                            <RoomCard key={room._id} room={room} />
-                        ))}
-                    </div>
-                } */}
+
 
 
                 {
