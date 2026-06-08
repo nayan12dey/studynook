@@ -51,15 +51,20 @@ const AddRoomPage = () => {
         setAmenities([]);
 
 
+        const { data: token } = await authClient.token()
+
+        console.log(token.token)
+
         const res = await fetch("http://localhost:5000/add-room", {
             method: 'POST',
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                authorization: `Bearer ${token.token}`
             },
             body: JSON.stringify(room)
         })
 
-        
+
 
         const data = await res.json()
         console.log(data)

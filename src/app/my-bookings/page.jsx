@@ -21,16 +21,28 @@ const MyBookingsPage = async () => {
         headers: await headers(),
     });
 
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    })
+
+    console.log(token)
+
     const user = session?.user;
 
     let bookings = [];
     if (user?.id) {
         try {
             const res = await fetch(`http://localhost:5000/booking/${user.id}`, {
+                method: 'GET',
+                headers: {
+                    "content-type": "application/json",
+                    authorization: `Bearer ${token}`
+                },
                 cache: "no-store",
             });
             if (res.ok) {
                 bookings = await res.json();
+                // console.log(bookings)
             }
         } catch {
             bookings = [];
@@ -170,7 +182,7 @@ const MyBookingsPage = async () => {
 
                                         {/* Footer */}
                                         <div className="flex items-center justify-end">
-                                            
+
 
                                             {canCancel && (
                                                 <CancelBooking bookingId={booking._id} />
@@ -188,3 +200,20 @@ const MyBookingsPage = async () => {
 };
 
 export default MyBookingsPage;
+
+
+
+
+
+
+// app.get("/request/:email", async (req, res) => {
+//   const email = req.params.email;
+
+//   const query = {
+//     yourEmail: email,
+//   };
+
+//   const result = await requestCollection.find(query).toArray();
+
+//   res.send(result);
+// });

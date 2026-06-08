@@ -5,9 +5,7 @@ import { useState } from 'react';
 
 const AmenitiesFilter = () => {
 
-    // const [amenities, setamenities] = useState()
-    // const router = useRouter();
-    // const searchParams = useSearchParams();
+    
 
 
     const router = useRouter();

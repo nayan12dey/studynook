@@ -52,6 +52,8 @@ const RoomDetailsPage = async ({ params }) => {
         headers: await headers() // headers containing the user's session token
     });
 
+    console.log(token)
+
 
 
     const room = await fetchSingleRoom(id, token);

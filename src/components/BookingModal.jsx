@@ -10,6 +10,7 @@ import {
     FiFileText,
 } from "react-icons/fi";
 import toast from "react-hot-toast";
+import { auth } from "@/lib/auth";
 
 const timeSlots = [
     "08:00",
@@ -47,39 +48,53 @@ export function BookingModal({ hourly_rate, room, user }) {
     }, [startTime, endTime, hourly_rate]);
 
 
-    const {room_name, room_image, ownerEmail} = room
+    const { room_name, room_image, ownerEmail } = room
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const bookingData = {
+            roomId: room._id,
             room_name,
             room_image,
             bookingDate: date,
             startTime,
             endTime,
+            startHour: Number(startTime.split(":")[0]),
+            endHour: Number(endTime.split(":")[0]),
             totalCost,
             specialNote,
             ownerEmail,
             userId: user.id
         };
 
+        const { token } = await auth.api.getToken({
+
+            headers: await headers() // headers containing the user's session token
+        });
+
+
+
         const res = await fetch(`http://localhost:5000/booking`, {
             method: "POST",
             headers: {
+                authorization: `Bearer ${token}`,
                 "content-type": "application/json"
             },
             body: JSON.stringify(bookingData)
         })
 
         console.log(bookingData);
-        
+
         const data = await res.json();
-        if(data.acknowledged){
+        if (res.ok) {
             toast.success("Room booked successfully!")
         }
-        
+        else {
+            toast.error(data.message)
+        }
+
     };
 
     return (
@@ -293,4 +308,6 @@ export function BookingModal({ hourly_rate, room, user }) {
         </Modal>
     );
 }
+
+
 
