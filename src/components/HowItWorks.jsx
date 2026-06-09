@@ -23,8 +23,8 @@ const HowItWorks = () => {
 
 
   return (
-    <div className="py-24 bg-gray-50 min-w-[1024px]">
-      <div className="w-[1200px] mx-auto px-8">
+    <div className="py-16 md:py-20 lg:py-24 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -32,7 +32,7 @@ const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {steps.map((step, index) => (
             <div key={index} className="p-8 rounded-2xl bg-white hover:bg-indigo-50 transition-all duration-300 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1">
               <div className="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mb-6">
