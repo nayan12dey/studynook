@@ -36,12 +36,12 @@ const RoomsPage = async ({ searchParams }) => {
                     </p>
                 </div>
 
-                <div className="max-w-4xl mx-auto mb-12 flex items-center gap-4">
+                <div className="max-w-4xl mx-auto mb-12 flex flex-col sm:flex-row gap-4">
                     <div className="flex-1">
                         <SearchBar />
                     </div>
 
-                    <div className="w-56">
+                    <div className="w-full sm:w-56">
                         <AmenitiesFilter />
                     </div>
                 </div>

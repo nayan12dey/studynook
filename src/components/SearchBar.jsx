@@ -49,7 +49,7 @@ const SearchBar = () => {
 
             <button
                 onClick={handleSearch}
-                className="h-10 px-6 mr-2 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition-colors cursor-pointer"
+                className="h-10 px-4 md:px-6 mr-2 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition-colors cursor-pointer"
 
             >
                 Search
