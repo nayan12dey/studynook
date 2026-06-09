@@ -30,8 +30,13 @@ const timeSlots = [
 ];
 
 export function BookingModal({ hourly_rate, room, user }) {
+
+
+    // getting token for client component
     const { data: session, isPending } = authClient.useSession()
     console.log(session?.session?.token, "session")
+
+    
     const [date, setDate] = useState("");
     const [startTime, setStartTime] = useState("");
     const [endTime, setEndTime] = useState("");

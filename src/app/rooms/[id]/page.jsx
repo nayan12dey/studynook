@@ -69,7 +69,8 @@ const RoomDetailsPage = async ({ params }) => {
         seat_capacity,
         room_image,
         availability_status,
-        ownerEmail
+        ownerEmail,
+        bookingCount = 0
     } = room;
 
     const isAvailable = availability_status !== 'unavailable';
@@ -160,11 +161,13 @@ const RoomDetailsPage = async ({ params }) => {
                     <div className="lg:col-span-2 flex flex-col gap-8">
 
                         {/* stats */}
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
                             <Stat icon={FaClock} label="Hourly Rate" value={`$${hourly_rate}`} accent={true} />
                             <Stat icon={FaUsers} label="Capacity" value={`${seat_capacity} people`} />
                             <Stat icon={FaBuilding} label="Floor" value={`${floor}`} />
                             <Stat icon={FaBolt} label="Status" value={isAvailable ? 'Open' : 'Closed'} />
+                            <Stat icon={FaStar} label="Booked" value={`${bookingCount} times`}
+                            />
                         </div>
 
                         {/* Description */}
@@ -204,9 +207,9 @@ const RoomDetailsPage = async ({ params }) => {
                             <div className="bg-white p-5 rounded-2xl shadow-md mb-4">
                                 <div className="flex gap-3">
 
-                                   <EditModal room={room}></EditModal>
+                                    <EditModal room={room}></EditModal>
 
-                                   <DeleteRoom room={room}></DeleteRoom>
+                                    <DeleteRoom room={room}></DeleteRoom>
 
                                 </div>
                             </div>
