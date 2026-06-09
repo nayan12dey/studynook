@@ -2,6 +2,7 @@
 
 
 import { authClient } from "@/lib/auth-client";
+import { updateRoom } from "@/lib/server-action";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -39,7 +40,7 @@ export function EditModal({ room: roomData }) {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
 
-        const session = await authClient.getSession();
+        const session = await authClient.token();
         // console.log(session);
 
 
@@ -76,6 +77,7 @@ export function EditModal({ room: roomData }) {
         const res = await fetch(`http://localhost:5000/rooms/${_id}`, {
             method: 'PATCH',
             headers: {
+                "authorization": `Bearer ${session.data.token}`,
                 "content-type": "application/json"
             },
             body: JSON.stringify(room)
@@ -84,6 +86,8 @@ export function EditModal({ room: roomData }) {
 
 
         const data = await res.json()
+        // revalidatePath("/rooms/[id]",page)
+        await updateRoom(`${_id}`)
         console.log(data)
 
 
@@ -94,13 +98,13 @@ export function EditModal({ room: roomData }) {
     return (
         <Modal>
             <Button
-                variant='secondary'
+                variant='Secondary' className={"bg-blue-600 text-white"}
             >
                 Edit Room
             </Button>
             <Modal.Backdrop>
                 <Modal.Container placement="auto">
-                    <Modal.Dialog className="sm:max-w-2xl">
+                    <Modal.Dialog className="sm:max-w-2xl overflow-y-auto">
                         <Modal.CloseTrigger />
                         <Modal.Header>
 
@@ -123,6 +127,7 @@ export function EditModal({ room: roomData }) {
                                                     type="text"
                                                     name="room_name"
                                                     id="room_name"
+                                                    defaultValue={roomData.room_name}
                                                     className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all hover:bg-slate-100/50"
                                                     placeholder="e.g., The Quiet Nook"
                                                 />
@@ -136,6 +141,7 @@ export function EditModal({ room: roomData }) {
                                                     required
                                                     name="description"
                                                     id="description"
+                                                    defaultValue={roomData.description}
                                                     rows={4}
                                                     className="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all hover:bg-slate-100/50 resize-y"
                                                     placeholder="Describe the room, its vibe, and any special rules..."
@@ -153,6 +159,7 @@ export function EditModal({ room: roomData }) {
                                                     type="url"
                                                     name="room_image"
                                                     id="room_image"
+                                                    defaultValue={roomData.room_image}
                                                     className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all hover:bg-slate-100/50"
                                                     placeholder="https://example.com/image.jpg"
                                                 />
@@ -172,6 +179,7 @@ export function EditModal({ room: roomData }) {
                                                     type="text"
                                                     name="floor"
                                                     id="floor"
+                                                    defaultValue={roomData.floor}
                                                     className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all hover:bg-slate-100/50"
                                                     placeholder="e.g., 3rd Floor"
                                                 />
@@ -189,6 +197,7 @@ export function EditModal({ room: roomData }) {
                                                     min="1"
                                                     name="seat_capacity"
                                                     id="seat_capacity"
+                                                    defaultValue={roomData.seat_capacity}
                                                     className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all hover:bg-slate-100/50"
                                                     placeholder="2-4 people"
                                                 />
@@ -207,6 +216,7 @@ export function EditModal({ room: roomData }) {
                                                     step="1"
                                                     name="hourly_rate"
                                                     id="hourly_rate"
+                                                    defaultValue={roomData.hourly_rate}
                                                     className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all hover:bg-slate-100/50"
                                                     placeholder="e.g., 5.00"
                                                 />

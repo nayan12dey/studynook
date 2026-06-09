@@ -17,7 +17,7 @@ const Navbar = () => {
   const router = useRouter()
   const { data: session } = useSession()
   const user = session?.user;
-  // console.log(user?.image)
+  console.log(user, session)
 
   const handleLogOut = async () => {
     await signOut()

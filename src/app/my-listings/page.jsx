@@ -33,11 +33,6 @@ const MyListingPage = () => {
 
                 setRooms(data);
 
-
-
-
-
-
     }
 
     useEffect(() => {

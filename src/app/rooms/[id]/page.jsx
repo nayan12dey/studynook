@@ -25,7 +25,7 @@ const fetchSingleRoom = async (id, token) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rooms/${id}`, {
         cache: 'no-store',
         headers: {
-            authorization: `Bearer ${token}` || ""
+            authorization: `Bearer ${token.token}` || ""
         }
     });
     const data = await res.json();

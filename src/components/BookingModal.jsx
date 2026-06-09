@@ -10,7 +10,8 @@ import {
     FiFileText,
 } from "react-icons/fi";
 import toast from "react-hot-toast";
-import { auth } from "@/lib/auth";
+import { authClient } from "@/lib/auth-client";
+// import { auth } from "@/lib/auth";
 
 const timeSlots = [
     "08:00",
@@ -29,6 +30,8 @@ const timeSlots = [
 ];
 
 export function BookingModal({ hourly_rate, room, user }) {
+    const { data: session, isPending } = authClient.useSession()
+    console.log(session?.session?.token, "session")
     const [date, setDate] = useState("");
     const [startTime, setStartTime] = useState("");
     const [endTime, setEndTime] = useState("");
@@ -69,17 +72,17 @@ export function BookingModal({ hourly_rate, room, user }) {
             userId: user.id
         };
 
-        const { token } = await auth.api.getToken({
+        // const { token } = await auth.api.getToken({
 
-            headers: await headers() // headers containing the user's session token
-        });
+        //     headers: await headers() // headers containing the user's session token
+        // });
 
 
-
+        
         const res = await fetch(`http://localhost:5000/booking`, {
             method: "POST",
             headers: {
-                authorization: `Bearer ${token}`,
+                authorization: `Bearer ${session?.session?.token}`,
                 "content-type": "application/json"
             },
             body: JSON.stringify(bookingData)
