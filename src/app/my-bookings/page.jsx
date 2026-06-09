@@ -25,9 +25,10 @@ const MyBookingsPage = async () => {
         headers: await headers()
     })
 
-    console.log(token)
+    // console.log(token)
 
     const user = session?.user;
+    // console.log(user, "user from mybooking")
 
     let bookings = [];
     if (user?.id) {
@@ -36,7 +37,7 @@ const MyBookingsPage = async () => {
                 method: 'GET',
                 headers: {
                     "content-type": "application/json",
-                    authorization: `Bearer ${token}`
+                    "authorization": `Bearer ${token}`
                 },
                 cache: "no-store",
             });

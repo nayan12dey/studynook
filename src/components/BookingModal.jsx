@@ -112,7 +112,7 @@ export function BookingModal({ hourly_rate, room, user }) {
 
             <Modal.Backdrop>
                 <Modal.Container placement="auto">
-                    <Modal.Dialog className="sm:max-w-2xl">
+                    <Modal.Dialog className="sm:max-w-2xl overflow-y-auto">
                         <Modal.CloseTrigger />
 
                         <Modal.Header>
