@@ -12,11 +12,11 @@ const AvailableStudyRooms = async () => {
 
 
     return (
-        <div className="py-24 bg-slate-50 min-w-[1024px]">
-            <div className="w-[1200px] mx-auto px-8">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4">Available Study Rooms</h2>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+        <div className="py-16 md:py-24 bg-slate-50 w-full">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-12 md:mb-16">
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Available Study Rooms</h2>
+                    <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
                         Explore our top-rated spaces designed to help you focus, collaborate, and succeed.
                     </p>
                 </div>
