@@ -98,7 +98,7 @@ const Navbar = () => {
                 </div>
 
 
-                <div className="relative group">
+                <div className="relative group hidden md:block">
                   <button className="flex items-center gap-3 p-1 px-5 rounded-full hover:bg-muted transition-colors border border-transparent hover:border-border">
                     {session?.user?.image ? (
                       <Image
@@ -175,7 +175,129 @@ const Navbar = () => {
               </>
           }
 
+
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              {isOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+
+
         </div>
+
+        {isOpen && (
+          <div className="md:hidden border-t border-gray-200 bg-white/95 py-4 space-y-3 pb-6">
+            <Link
+              href="/"
+              className="block px-4 py-2 text-gray-700 hover:bg-indigo-100 rounded-lg"
+              onClick={() => setIsOpen(false)}
+            >
+              Home
+            </Link>
+
+            <Link
+              href="/rooms"
+              className="block px-4 py-2 text-gray-700 hover:bg-indigo-100 rounded-lg"
+              onClick={() => setIsOpen(false)}
+            >
+              Rooms
+            </Link>
+
+            {user ? (
+              <>
+                <Link
+                  href="/add-room"
+                  className="block px-4 py-2 text-gray-700 hover:bg-indigo-100 rounded-lg"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Add Room
+                </Link>
+
+                <Link
+                  href="/my-listings"
+                  className="block px-4 py-2 text-gray-700 hover:bg-indigo-100 rounded-lg"
+                  onClick={() => setIsOpen(false)}
+                >
+                  My Listings
+                </Link>
+
+                <Link
+                  href="/my-bookings"
+                  className="block px-4 py-2 text-gray-700 hover:bg-indigo-100 rounded-lg"
+                  onClick={() => setIsOpen(false)}
+                >
+                  My Bookings
+                </Link>
+
+                <Link
+                  href="/dashboard"
+                  className="block px-4 py-2 text-gray-700 hover:bg-indigo-100 rounded-lg"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Dashboard
+                </Link>
+
+                <Link
+                  href="/settings"
+                  className="block px-4 py-2 text-gray-700 hover:bg-indigo-100 rounded-lg"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Settings
+                </Link>
+
+                <button
+                  onClick={() => {
+                    setIsOpen(false);
+                    handleLogOut();
+                  }}
+                  className="w-full text-left px-4 py-2 text-red-500 hover:bg-red-50 rounded-lg"
+                >
+                  Log Out
+                </button>
+              </>
+            ) : (
+              <div className="flex flex-col gap-3 px-4 pt-2">
+                <Link href="/login" onClick={() => setIsOpen(false)}>
+                  <Button
+                    variant="outline"
+                    className="w-full border hover:border-indigo-700 hover:text-indigo-700"
+                  >
+                    Login
+                  </Button>
+                </Link>
+
+                <Link href="/register" onClick={() => setIsOpen(false)}>
+                  <Button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white">
+                    Register
+                  </Button>
+                </Link>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </nav>
   );
