@@ -23,8 +23,8 @@ const Features = () => {
 
 
   return (
-    <div className="py-24 bg-white min-w-[1024px]">
-      <div className="w-[1200px] mx-auto px-8">
+    <div className="py-16 md:py-20 lg:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose StudyNook?</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -32,7 +32,7 @@ const Features = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <div key={index} className="p-8 rounded-2xl bg-indigo-50 hover:bg-indigo-100 duration-300 border border-indigo-100">
               <div className="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6">
