@@ -124,11 +124,11 @@ const Navbar = () => {
                       <p className="font-bold text-sm">Welcome back!</p>
                       <p className="text-xs truncate text-slate-500">{session?.user?.email}</p>
                     </div>
-                    <Link href="/dashboard" className="px-4 py-2 text-sm hover:bg-muted flex items-center gap-3 transition-colors">
-                      <LuLayoutDashboard className="w-4 h-4" /> Dashboard
+                    <Link href="/my-listings" className="px-4 py-2 text-sm hover:bg-muted flex items-center gap-3 transition-colors">
+                      <LuLayoutDashboard className="w-4 h-4" /> My Listings
                     </Link>
-                    <Link href="/settings" className="px-4 py-2 text-sm hover:bg-muted flex items-center gap-3 transition-colors">
-                      <BiUser className="w-4 h-4" /> Settings
+                    <Link href="/my-bookings" className="px-4 py-2 text-sm hover:bg-muted flex items-center gap-3 transition-colors">
+                      <BiUser className="w-4 h-4" /> My Bookings
                     </Link>
                     <button
                       onClick={handleLogOut}
@@ -250,22 +250,6 @@ const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                 >
                   My Bookings
-                </Link>
-
-                <Link
-                  href="/dashboard"
-                  className="block px-4 py-2 text-gray-700 hover:bg-indigo-100 rounded-lg"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Dashboard
-                </Link>
-
-                <Link
-                  href="/settings"
-                  className="block px-4 py-2 text-gray-700 hover:bg-indigo-100 rounded-lg"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Settings
                 </Link>
 
                 <button
