@@ -12,6 +12,7 @@ import { FiGrid } from 'react-icons/fi';
 const MyListingPage = () => {
 
     const [rooms, setRooms] = useState([]);
+    console.log(rooms)
 
     const getRooms = async () => {
             const session = await authClient.getSession();
@@ -20,16 +21,17 @@ const MyListingPage = () => {
             const email = session?.data?.user?.email;
 
             const { data: token } = await authClient.token();
+            console.log(token)
 
 
-            const res = await fetch(`http://localhost:5000/my-listings/${email}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-listings/${email}`, {
                 headers: {
                 authorization: `Bearer ${token.token}`,
                 },
         }
         );
 
-                const data = await res.json();
+                const data = await res.json() || [];
 
                 setRooms(data);
 
@@ -82,7 +84,7 @@ const MyListingPage = () => {
                 ) : (
                     /* Listings Grid */
                     <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
-                        {rooms.map((room) => (
+                        {rooms?.map((room) => (
                             <RoomCard
                                 key={room._id}
                                 room={room}

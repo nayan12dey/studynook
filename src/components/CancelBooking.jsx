@@ -14,7 +14,7 @@ export function CancelBooking({ bookingId }) {
         console.log(token, "cancel")
 
 
-        const res = await fetch(`http://localhost:5000/booking/${bookingId}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${bookingId}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json",

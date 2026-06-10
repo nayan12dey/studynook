@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { FiHome, FiImage, FiDollarSign, FiUsers, FiLayers, FiCheck } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import { authClient } from '@/lib/auth-client';
+import { useRouter } from 'next/navigation';
+
 
 const AMENITIES_OPTIONS = [
     'Whiteboard',
@@ -16,6 +18,7 @@ const AMENITIES_OPTIONS = [
 
 const AddRoomPage = () => {
 
+
     const [amenities, setAmenities] = useState([]);
 
     const toggleAmenity = (amenity) => {
@@ -25,6 +28,8 @@ const AddRoomPage = () => {
                 : [...prev, amenity]
         );
     };
+
+    const router = useRouter()
 
 
 
@@ -46,16 +51,14 @@ const AddRoomPage = () => {
 
 
         console.log("Form submitted:", room);
-        toast.success('Room added successfully!');
-        e.currentTarget?.reset();
-        setAmenities([]);
+
 
 
         const { data: token } = await authClient.token()
 
         console.log(token.token)
 
-        const res = await fetch("http://localhost:5000/add-room", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/add-room`, {
             method: 'POST',
             headers: {
                 "content-type": "application/json",
@@ -65,9 +68,15 @@ const AddRoomPage = () => {
         })
 
 
-
         const data = await res.json()
         console.log(data)
+
+        if (res.ok) {
+            toast.success('Room added successfully!');
+            e.currentTarget?.reset();
+            setAmenities([]);
+            router.push("/rooms")
+        }
 
     };
 

@@ -115,7 +115,7 @@ const RegisterPage = () => {
                             name="password"
                             type="password"
                             validate={(value) => {
-                                if (value.length < 8) {
+                                if (value.length < 6) {
                                     return "Password must be at least 6 characters";
                                 }
                                 if (!/[A-Z]/.test(value)) {
@@ -129,7 +129,7 @@ const RegisterPage = () => {
                         >
                             <Label>Password</Label>
                             <Input placeholder="Enter your password" />
-                            <Description>Must be at least 6 characters with 1 uppercase and 1 number</Description>
+                            <Description>Must be at least 6 characters with 1 uppercase, 1 lowercase letter and 1 number</Description>
                             <FieldError />
                         </TextField>
 

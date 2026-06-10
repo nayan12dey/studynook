@@ -74,7 +74,7 @@ export function EditModal({ room: roomData }) {
         setUpdatedAmenities([]);
 
 
-        const res = await fetch(`http://localhost:5000/rooms/${_id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${_id}`, {
             method: 'PATCH',
             headers: {
                 "authorization": `Bearer ${session.data.token}`,

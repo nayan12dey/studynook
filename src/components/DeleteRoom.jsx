@@ -1,6 +1,7 @@
 
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
 import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
@@ -11,10 +12,15 @@ export function DeleteRoom({ room }) {
 
     const handleDelete = async () => {
 
-        const res = await fetch(`http://localhost:5000/rooms/${_id}`, {
+
+        const session = await authClient.token();
+        console.log(session, "from delete room")
+
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${_id}`, {
             method: "DELETE",
             headers: {
                 "content-type": "application/json",
+                 "authorization": `Bearer ${session.data.token}`
             }
         })
 

@@ -84,10 +84,10 @@ export function BookingModal({ hourly_rate, room, user }) {
 
 
         
-        const res = await fetch(`http://localhost:5000/booking`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking`, {
             method: "POST",
             headers: {
-                authorization: `Bearer ${session?.session?.token}`,
+                "authorization": `Bearer ${session?.session?.token}`,
                 "content-type": "application/json"
             },
             body: JSON.stringify(bookingData)
