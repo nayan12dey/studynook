@@ -70,7 +70,7 @@ const AvailableStudyRooms = async () => {
 
                                         {/* Amenities Chips */}
                                         <div className="flex flex-wrap gap-1.5 mt-4 min-h-[24px]">
-                                            {room.amenities.map((amenity, index) => (
+                                            {room.amenities.slice(0,3).map((amenity, index) => (
                                                 <span
                                                     key={index}
                                                     className="bg-indigo-50/60 border border-indigo-100 text-indigo-600 text-[10px] font-semibold px-2.5 py-0.5 rounded-md tracking-wide"
@@ -78,9 +78,9 @@ const AvailableStudyRooms = async () => {
                                                     {amenity}
                                                 </span>
                                             ))}
-                                            {room.amenities > 0 && (
-                                                <span className="bg-slate-50 border border-slate-200 text-slate-500 text-[10px] font-semibold px-2 py-0.5 rounded-md">
-                                                    +{room.amenities} more
+                                            {room.amenities.length > 3 && (
+                                                <span className="bg-slate-50 border border-slate-200 text-indigo-600 text-[10px] font-semibold px-2 py-0.5 rounded-md">
+                                                    +{room.amenities.length - 3} more
                                                 </span>
                                             )}
                                         </div>
