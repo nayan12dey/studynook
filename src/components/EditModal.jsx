@@ -4,7 +4,7 @@
 import { authClient } from "@/lib/auth-client";
 import { updateRoom } from "@/lib/server-action";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FiCheck, FiDollarSign, FiHome, FiImage, FiLayers, FiUsers } from "react-icons/fi";
 
@@ -24,6 +24,11 @@ export function EditModal({ room: roomData }) {
 
     const [updatedAmenities, setUpdatedAmenities] = useState([]);
 
+    useEffect(() => {
+        if (roomData?.amenities) {
+            setUpdatedAmenities(roomData.amenities);
+        }
+    }, [roomData]);
 
 
     const toggleAmenity = (amenity) => {
@@ -70,8 +75,8 @@ export function EditModal({ room: roomData }) {
 
         console.log("Form submitted:", room);
         toast.success('Room Updated successfully!');
-        e.currentTarget?.reset();
-        setUpdatedAmenities([]);
+        // e.currentTarget?.reset();
+        // setUpdatedAmenities([]);
 
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${_id}`, {
