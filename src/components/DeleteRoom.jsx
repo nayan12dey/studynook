@@ -26,7 +26,7 @@ export function DeleteRoom({ room }) {
 
         const data = await res.json()
         console.log(data)
-        toast.error("Room deleted successfully")
+        toast.success("Room deleted successfully")
         redirect("/rooms")
     }
 
