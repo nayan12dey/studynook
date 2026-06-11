@@ -67,11 +67,11 @@ const RoomsPage = async ({ searchParams }) => {
 
                             <h2 className="text-xl font-bold text-slate-800">No Rooms Found</h2>
 
-                            <p className="mt-2 text-sm text-slate-500 max-w-xs">
+                            {/* <p className="mt-2 text-sm text-slate-500 max-w-xs">
                                 {sParams?.searchTerm
                                     ? <>No results for <span className="font-semibold text-indigo-600">&ldquo;{sParams.searchTerm}&rdquo;</span>. Try a different search term.</>
                                     : 'No study rooms are available right now. Please check back soon.'}
-                            </p>
+                            </p> */}
 
                             {sParams?.searchTerm && (
                                 <Link
