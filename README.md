@@ -2,7 +2,7 @@
 
 > A full-stack MERN web application that allows students and library users to discover, list, and book study rooms with real-time availability and conflict-free scheduling.
 
-🔗 Live Site: 
+🔗 Live Site: https://studynook-alpha.vercel.app/
 
 ---
 
